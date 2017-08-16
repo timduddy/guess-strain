@@ -20,6 +20,7 @@ export class GuessComponent implements OnInit, OnDestroy {
   private strain_card;
   private answer;
   private incorrect;
+  private id;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -27,13 +28,13 @@ export class GuessComponent implements OnInit, OnDestroy {
               private cs: CardService) { }
 
   ngOnInit() {
-    let id: string;
-    this.route.params.take(1).subscribe(param => id = param['id']);
-    this.subscription = this.cs.getCard(id)
+    // let id: string;
+    this.route.params.take(1).subscribe(param => this.id = param['id']);
+    this.subscription = this.cs.getCard(this.id)
       .subscribe(item => {
         if (item) {
           this.strain_card = item;
-          console.log(this.strain_card);
+          // console.log(this.strain_card);
         }
       });
   }
@@ -41,7 +42,7 @@ export class GuessComponent implements OnInit, OnDestroy {
   guessStrain() {
     if (this.answer === this.strain_card.strain) {
       console.log('Correct!');
-      this.router.navigate(['/entry']);
+      this.router.navigate(['/entry'], { queryParams: { card: this.id } });
     } else {
       console.log('Incorrect!');
       this.incorrect = true;

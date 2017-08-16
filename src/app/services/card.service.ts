@@ -8,6 +8,7 @@ import 'rxjs/Rx';
 export class CardService {
 
   private cards: FirebaseListObservable<any[]>;
+  private entry: FirebaseListObservable<any>;
 
   constructor(private af: AngularFireDatabase) { }
 
@@ -21,5 +22,19 @@ export class CardService {
   getCard(id: string) {
     return this.af.object('/strain-cards/' + id);
   }
+
+  enterContest(name: string, phone: string, email: string, card_number: number) {
+
+    const timestamp = Date.now();
+    this.entry = this.af.list('/entries');
+    this.entry.push({
+        'name': name,
+        'phone': phone,
+        'email': email,
+        'timestamp': timestamp,
+        'card_number': card_number
+    });
+  }
+
 
 }

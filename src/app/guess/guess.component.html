@@ -1,7 +1,10 @@
 <div fxLayout="column" fxLayoutGap="16px">
     <div fxFlex="350px" fxFlex.lt-md="225px" class="strain-image" [ngStyle]="{'background-image': 'url(' + strain_card?.image + ')'}"></div>
     <div fxFlex *ngIf="incorrect">
-        <p>Sorry, that's incorrect</p>
+        <p class="warning">
+            <md-icon>error</md-icon>
+            That guess is incorrect
+        </p>
     </div>
     <div fxFlex>
         <md-radio-group fxLayout="row" fxLayoutWrap [(ngModel)]="answer">

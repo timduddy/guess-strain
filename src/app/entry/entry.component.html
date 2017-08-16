@@ -3,16 +3,16 @@
   <p>Please fill out the form to submit your entry to win $100</p>
   <div fxLayout="column" fxLayoutGap="8px">
     <md-input-container fxFlex>
-      <input mdInput placeholder="Name" />
+      <input mdInput placeholder="Name" [(ngModel)]="name" />
     </md-input-container>
     <md-input-container fxFlex>
-      <input mdInput placeholder="Phone" />
+      <input mdInput placeholder="Phone" [(ngModel)]="phone" />
     </md-input-container>
     <md-input-container fxFlex>
-      <input mdInput placeholder="Email" />
+      <input mdInput placeholder="Email" [(ngModel)]="email" />
     </md-input-container>
     <div fxFlex>
-      <button md-raised-button color="accent">SUBMIT</button>
+      <button md-raised-button color="accent" [disabled]="(name === '') && (phone === '') && (email === '')" (click)="submitEntry()">SUBMIT</button>
     </div>
   </div>
 </md-card>

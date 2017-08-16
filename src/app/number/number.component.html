@@ -10,12 +10,15 @@
     <input type="number" mdInput [(ngModel)]="card_number" autofocus>
   </md-input-container>
 
-  <div fxFlex *ngIf="invalid">
-    <p>That's not a valid card number</p>
-  </div>
-
   <div fxFlex> 
     <button md-raised-button color="accent" (click)="getCard()">NEXT</button>
+  </div>
+
+  <div fxFlex *ngIf="invalid">
+    <p class="warning">
+      <md-icon>error</md-icon>
+      That's not a valid card number
+    </p>
   </div>
 
 </div>
