@@ -1,0 +1,79 @@
+/* For use in src/lib/core/theming/_palette.scss */
+//http://mcg.mbitson.com/
+
+/* For use in src/lib/core/theming/_palette.scss */
+$md-primary: (
+    50 : #eef3e6,
+    100 : #d4e0c2,
+    200 : #b7cc99,
+    300 : #9ab770,
+    400 : #84a751,
+    500 : #6e9832,
+    600 : #66902d,
+    700 : #5b8526,
+    800 : #517b1f,
+    900 : #3f6a13,
+    A100 : #cdffa1,
+    A200 : #b2ff6e,
+    A400 : #97ff3b,
+    A700 : #89ff21,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$md-secondary: (
+    50 : #faece5,
+    100 : #f3cfbf,
+    200 : #ecb094,
+    300 : #e49069,
+    400 : #de7849,
+    500 : #d86029,
+    600 : #d45824,
+    700 : #ce4e1f,
+    800 : #c84419,
+    900 : #bf330f,
+    A100 : #ffefec,
+    A200 : #ffc5b9,
+    A400 : #ff9b86,
+    A700 : #ff866d,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+
+
+
+
+
+$primary: mat-palette($md-primary);
+$accent: mat-palette($md-secondary);
+$warn: mat-palette($mat-red);
+$theme: mat-light-theme($primary, $accent, $warn);

@@ -1,0 +1,21 @@
+<div fxLayout="column" fxLayoutGap="16px">
+    <div fxFlex="350px" fxFlex.lt-md="225px" class="strain-image" [ngStyle]="{'background-image': 'url(' + strain_card?.image + ')'}"></div>
+    <div fxFlex *ngIf="incorrect">
+        <p>Sorry, that's incorrect</p>
+    </div>
+    <div fxFlex>
+        <md-radio-group fxLayout="row" fxLayoutWrap [(ngModel)]="answer">
+            <md-radio-button fxFlex="50%" *ngFor="let option of strain_card?.options" [value]="option">
+                {{option | title }}
+            </md-radio-button>
+        </md-radio-group>
+    </div>
+    <div fxFlex>
+        <button md-raised-button color="accent" [disabled]="!answer" (click)="guessStrain()">GUESS</button>
+    </div>
+</div>
+
+
+
+
+

@@ -1,0 +1,21 @@
+<div fxLayout="column" fxLayoutGap="16px">
+
+  <div fxFlex>
+    <p>
+      Enter a number to guess the strain
+    </p>
+  </div>
+
+  <md-input-container fxFlex>
+    <input type="number" mdInput [(ngModel)]="card_number" autofocus>
+  </md-input-container>
+
+  <div fxFlex *ngIf="invalid">
+    <p>That's not a valid card number</p>
+  </div>
+
+  <div fxFlex> 
+    <button md-raised-button color="accent" (click)="getCard()">NEXT</button>
+  </div>
+
+</div>
