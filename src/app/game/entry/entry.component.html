@@ -3,7 +3,7 @@
   <p>Please fill out the form to submit your entry to win $100</p>
   <div fxLayout="column" fxLayoutGap="8px">
     <md-input-container fxFlex>
-      <input mdInput placeholder="Name" [(ngModel)]="name" />
+      <input mdInput placeholder="Name" [(ngModel)]="name" autofocus />
     </md-input-container>
     <md-input-container fxFlex>
       <input mdInput placeholder="Phone" [(ngModel)]="phone" />
@@ -12,7 +12,13 @@
       <input mdInput placeholder="Email" [(ngModel)]="email" />
     </md-input-container>
     <div fxFlex>
-      <button md-raised-button color="accent" [disabled]="(name === '') && (phone === '') && (email === '')" (click)="submitEntry()">SUBMIT</button>
+      <md-checkbox [(ngModel)]="newsletter">Sign up for our newsletter</md-checkbox>
     </div>
+    <div fxFlex>
+      <button md-raised-button color="accent" [disabled]="!name || !phone || !email" (click)="submitEntry()">SUBMIT</button>
+    </div>
+    <md-error *ngIf="duplicate">
+          You are only able to enter once per card.
+    </md-error>
   </div>
 </md-card>

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NumberComponent } from './number.component';
+import { CompleteComponent } from './complete.component';
 
-describe('NumberComponent', () => {
-  let component: NumberComponent;
-  let fixture: ComponentFixture<NumberComponent>;
+describe('CompleteComponent', () => {
+  let component: CompleteComponent;
+  let fixture: ComponentFixture<CompleteComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NumberComponent ]
+      declarations: [ CompleteComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NumberComponent);
+    fixture = TestBed.createComponent(CompleteComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

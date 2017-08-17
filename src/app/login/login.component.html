@@ -1,0 +1,35 @@
+<div class="wrapper">
+    <div class="container" fxLayout="column" fxLayoutGap="16px">
+        <div fxFlex="95px">
+            <img src="/assets/images/dakine-logo.png" class="logo" />
+        </div>
+        <div fxFlex>
+          <md-card>
+            <md-card-title>Admin Login</md-card-title>
+            <form fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="16px" [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
+              <md-input-container>
+                <input mdInput placeholder="Email" formControlName="email" required autofocus>
+                <md-error *ngIf="formErrors.email">
+                  {{ formErrors.email}}
+                </md-error>
+              </md-input-container>
+              <md-input-container>
+                <input type="password" mdInput placeholder="Password" formControlName="password" required>
+                <md-error *ngIf="formErrors.password">
+                  {{ formErrors.password}}
+                </md-error>
+              </md-input-container>
+              <div>
+                <md-progress-bar *ngIf="processing" [color]="progressColor" mode="indeterminate"></md-progress-bar>
+              </div>
+              <md-error *ngIf="authError">
+                {{ authError }}
+              </md-error>
+              <div fxFlex class="text-right">
+                <button type="submit" md-raised-button color="accent" [disabled]="loginForm.pristine">SIGN IN</button>
+              </div>
+            </form>
+          </md-card>
+        </div>
+    </div>
+</div>

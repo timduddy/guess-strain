@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy, HostBinding } from '@angular/core';
-import { slideLeftToRight, slideUp } from '../../shared/animations';
+import { slideLeftToRight, slideUp } from '../../../shared/animations';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { Subscription } from 'rxjs/subscription';
-import { CardService } from '../services/card.service';
+import { CardService } from '../../services/card.service';
 
 @Component({
   selector: 'app-guess',
@@ -34,17 +34,14 @@ export class GuessComponent implements OnInit, OnDestroy {
       .subscribe(item => {
         if (item) {
           this.strain_card = item;
-          // console.log(this.strain_card);
         }
       });
   }
 
   guessStrain() {
     if (this.answer === this.strain_card.strain) {
-      console.log('Correct!');
-      this.router.navigate(['/entry'], { queryParams: { card: this.id } });
+      this.router.navigate(['/game/entry'], { queryParams: { card: this.id } });
     } else {
-      console.log('Incorrect!');
       this.incorrect = true;
     }
   }

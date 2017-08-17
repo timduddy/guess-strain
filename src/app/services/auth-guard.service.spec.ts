@@ -1,24 +1,26 @@
 import { TestBed, inject } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../../environments/environment';
 
-import { CardService } from './card.service';
+import { AuthService } from './auth.service';
+import { AuthGuard } from './auth-guard.service';
 
-describe('CardService', () => {
+describe('AuthGuardService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
         AngularFireModule.initializeApp(environment.firebase),
-        AngularFireDatabaseModule,
+        AngularFireAuthModule,
       ],
-      providers: [CardService]
+      providers: [AuthGuard, AuthService]
     });
   });
 
-  it('should be created', inject([CardService], (service: CardService) => {
+  it('should be created', inject([AuthGuard], (service: AuthGuard) => {
     expect(service).toBeTruthy();
   }));
 });

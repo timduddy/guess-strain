@@ -86,13 +86,6 @@ export const slideUp =
         opacity: 0,
         transform: 'translate3d(0, 100%, 0)'
       }),
-      animate('650ms cubic-bezier(0.25,0.5,0.25,1.05)')
+      animate('550ms cubic-bezier(0.25,.75,0.25,1.2)')
     ]),
-    /*transition(':leave', [
-      style({
-        opacity: 0,
-        transform: 'translate3d(100%, 0, 0)'
-      }),
-      animate('450ms cubic-bezier(0.25,0.5,0.25,1.05)')
-    ])*/
   ]);

@@ -1,0 +1,15 @@
+@import '../../../app-theme';
+
+h1 {
+    color: rgba(255, 255, 255, 0.87);
+    font-weight: 600;
+    text-align: center;
+}
+
+p {
+    text-align: center;
+}
+
+a {
+    color: mat_color($accent);
+}

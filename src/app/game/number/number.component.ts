@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { Subscription } from 'rxjs/subscription';
-import { CardService } from '../services/card.service';
+import { CardService } from '../../services/card.service';
 
 @Component({
   selector: 'app-number',
@@ -26,7 +26,7 @@ export class NumberComponent implements OnInit {
     this.subscription = this.cs.getCard(this.card_number)
       .subscribe(item => {
         if (item.$exists()) {
-          this.router.navigate(['/number', this.card_number]);
+          this.router.navigate(['/game/number', this.card_number]);
         } else {
           this.invalid = true;
         }

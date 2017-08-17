@@ -1,0 +1,67 @@
+<div class="admin">
+    <img src="/assets/images/dakine-logo.png" class="logo" />
+    <div class="buttons">
+        <button md-raised-button (click)="pickWinner()"color="accent">PICK WINNER</button>
+        <button md-raised-button (click)="deleteAll()"color="warn">DELETE ALL</button>
+        <button md-raised-button color="primary" class="logout" (click)="logout()">LOGOUT</button>
+    </div>
+    <md-card>
+        <div fxLayout="row" class="table-head">
+            <div fxFlex="20%" class="table-head-col">
+                Name
+            </div>
+            <div fxFlex="15%" class="table-head-col">
+                Date
+            </div>
+            <div fxFlex="20%" class="table-head-col">
+                Email
+            </div>
+            <div fxFlex="20%" class="table-head-col">
+                Phone
+            </div>
+            <div fxFlex="10%" class="table-head-col">
+                Card #
+            </div>
+            <div fxFlex="15%" class="table-head-col">
+                Newsletter
+            </div>
+        </div>
+        <div fxLayout="column" *ngIf="entries?.length === 0">
+            <div class="table-body-row">
+                <div class="table-body-col">
+                    <p>No entries</p>
+                </div>
+            </div>
+        </div>
+        <div fxLayout="column" *ngFor="let entry of entries">
+            <div fxLayout="row" class="table-body-row" [class.winner]="entry.winner">
+                <div fxFlex="20%" class="table-body-col">
+                    {{ entry.name }}
+                </div>
+                <div fxFlex="15%" class="table-body-col">
+                    {{ entry.timestamp | date:'medium'}}
+                </div>
+                <div fxFlex="20%" class="table-body-col">
+                    {{ entry.email }}
+                </div>
+                <div fxFlex="20%" class="table-body-col">
+                    {{ entry.phone }}
+                </div>
+                <div fxFlex="10%" class="table-body-col">
+                    {{ entry.card_number }}
+                </div>
+                <div fxFlex="10%" class="table-body-col">
+                    {{ entry.newsletter ? 'Yes' : 'No' }}
+                </div>
+                <div fxFlex="5%" class="table-body-col">
+                    <button md-icon-button (click)="delete(entry.$key)">
+                        <md-icon>delete</md-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </md-card>
+
+
+    
+</div>

@@ -1,7 +1,8 @@
 import { Component, OnInit, OnDestroy, HostBinding } from '@angular/core';
-import { slideLeftToRight, slideUp } from '../../shared/animations';
-import { CardService } from '../services/card.service';
+import { slideLeftToRight, slideUp } from '../../../shared/animations';
+import { CardService } from '../../services/card.service';
 import { Router, ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-entry',
@@ -15,7 +16,9 @@ export class EntryComponent implements OnInit {
   private phone: string;
   private email: string;
   private card_number: number;
+  private newsletter = true;
   private sub: any;
+  private duplicate = false;
 
   @HostBinding('@routeAnimation') routeAnimation = true;
   @HostBinding('style.display') display = 'block';
@@ -29,17 +32,15 @@ export class EntryComponent implements OnInit {
       .subscribe(params => {
         // Defaults to 0 if no query param provided.
         this.card_number = +params['card'] || 0;
-        console.log(this.card_number);
       });
   }
 
   submitEntry() {
-    if (this.name && this.phone && this.email) {
-      this.cs.enterContest(this.name, this.phone, this.email, this.card_number);
-      this.router.navigate(['/']);
-    } else {
-      console.log('Empty items');
-    }
+      if (this.cs.enterContest(this.name, this.phone, this.email, this.card_number, this.newsletter)) {
+        this.router.navigate(['/game/thanks']);
+      } else {
+        this.duplicate = true;
+      }
   }
 
 }
