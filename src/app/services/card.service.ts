@@ -17,10 +17,10 @@ export class CardService {
     });
   }
 
-  getCards(num) {
+  getCards() {
     this.cards = this.af
       .list('/strain-cards')
-      .map( (arr) => arr.reverse() ) as FirebaseListObservable<any[]>;
+      .map( (arr) => arr ) as FirebaseListObservable<any[]>;
     return this.cards;
   }
 

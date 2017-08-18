@@ -6,6 +6,9 @@ import 'rxjs/add/operator/mergeMap';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { Subscription } from 'rxjs/subscription';
+import { Title } from '@angular/platform-browser';
+
+const SMALL_WIDTH_BREAKPOINT = 1024;
 
 @Component({
   selector: 'app-admin',
@@ -14,31 +17,49 @@ import { Subscription } from 'rxjs/subscription';
 })
 export class AdminComponent implements OnInit {
 
-  private subscription: Subscription;
-  entries: any;
+  title = 'Dakine 420 Strain Game';
 
-  constructor(private auth: AuthService, private cs: CardService, private router: Router) { }
+  constructor(
+    private auth: AuthService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private titleService: Title
+  ) { }
 
   ngOnInit() {
-    this.auth.user.subscribe((user) => {
-      if (user) {
-        // console.log(user);
+    if (this.route.snapshot.children[0]) {
+      const myData = this.route.snapshot.children[0].data;
+      if (myData) {
+        this.title = myData.title;
       }
-    });
-    this.subscription = this.cs.getEntries()
-      .subscribe(items => {
-        if (items) {
-          this.entries = items;
+    }
+    this.setTitle(this.title);
+    this.router.events
+      // Only continue with navigation end events
+      .filter(event => event instanceof NavigationEnd)
+      // Swap the observable for the current route
+      .map(() => this.route)
+      // Loop the routes to find the last activated child
+      .map(route => {
+        while (route.firstChild) {
+          route = route.firstChild;
+        }
+        return route;
+      })
+      // Only continue for the primary router outlet
+      .filter(route => route.outlet === 'primary')
+      // Limit to just the data object
+      .mergeMap(route => route.data)
+      .subscribe((event: any) => {
+        if (event.title) {
+          this.title = event.title;
+          this.setTitle(event.title);
         }
       });
   }
 
-  delete(entry) {
-    this.cs.deleteEntry(entry);
-  }
-
-  deleteAll() {
-    this.cs.clearEntries();
+  isScreenSmall(): boolean {
+    return window.matchMedia(`(max-width: ${SMALL_WIDTH_BREAKPOINT}px)`).matches;
   }
 
   logout() {
@@ -47,13 +68,8 @@ export class AdminComponent implements OnInit {
     });
   }
 
-  pickWinner() {
-    for (let i = 0; i < this.entries.length; i++) {
-      this.entries[i].winner = false;
-    }
-    const winner = Math.floor((Math.random() * this.entries.length));
-    this.entries[winner].winner = true;
-    console.log(this.entries[winner]);
+  public setTitle(newTitle: string) {
+    this.titleService.setTitle(newTitle);
   }
 
 }

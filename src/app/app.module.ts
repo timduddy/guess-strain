@@ -21,7 +21,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { AdminComponent } from './admin/admin.component';
+// import { AdminComponent } from './admin/admin.component';
+// import { EntriesComponent } from './admin/entries/entries.component';
+// import { CardsComponent } from './admin/cards/cards.component';
+// import { UsersComponent } from './admin/users/users.component';
 
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth-guard.service';
@@ -38,8 +41,7 @@ const routes: Routes = [
   },
   {
     path: 'admin',
-    canActivate: [AuthGuard],
-    component: AdminComponent
+    loadChildren: 'app/admin/admin.module#AdminModule'
   },
   {
     path: '**',
@@ -52,7 +54,11 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     LoginComponent,
-    AdminComponent,
+    // SearchPipe,
+    // AdminComponent,
+    // EntriesComponent,
+    // CardsComponent,
+    // UsersComponent,
   ],
   imports: [
     BrowserModule,

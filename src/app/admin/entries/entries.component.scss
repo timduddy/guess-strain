@@ -1,0 +1,71 @@
+.admin {
+    position: relative;
+    top: 0;
+    left: 0;
+    overflow: auto;
+    display: block;
+    padding: 8px;
+    .logo {
+        max-width: 280px;
+        margin: 0 0 24px 0;
+    }
+    .buttons {
+        position: absolute;
+        top: 24px;
+        right: 24px;
+    }
+    md-card {
+        padding: 0;
+        .toolbar {
+            background-color: #FAFAFA;
+            padding: 8px;
+            .search {
+                display: flex;
+                align-items: center;
+                md-icon {
+                    color: rgba(0,0,0,0.54);
+                    margin-right: 16px;
+                }
+                input {
+                    font-size: 16px;
+                    line-height: 36px;
+                    border: 0;
+                    width: calc(100% - 48px);
+                    background-color: transparent;
+                    outline: 0;
+                    &:focus {
+                        background-color: rgba(255,255,255,0.12);
+                    }
+                }
+            }
+
+        }
+        .table-head {
+            background-color: #FAFAFA;
+            border-bottom: 1px #ccc solid;
+            .table-head-col {
+                padding: 12px 8px;
+                font-size: 12px;
+                // border-right: 1px #ccc solid;
+            }
+        }
+        .winner {
+            background-color: rgba(0, 255, 0, 0.34);
+        }
+        .table-body-row {
+            border-bottom: 1px #ddd solid;
+            &:hover {
+                background-color: #eee;
+            }
+            .table-body-col {
+                padding: 12px 8px;
+                display: flex;
+                align-items: center;
+            }
+            md-icon {
+                color: rgba(255, 0, 0, 0.87);
+            }
+        }
+
+    }
+}

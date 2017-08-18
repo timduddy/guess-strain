@@ -1,0 +1,11 @@
+<div fxLayout="row" fxLayoutGap="24px" fxLayoutWrap
+     fxLayout.lt-md="column" fxLayoutGap.lt-md="16px">
+  <md-card fxFlex="calc(25% - 24px)" fxFlex.lt-md class.gt-md="large" *ngFor="let card of cards">
+    <img md-card-image [src]="card.image">
+    <md-card-title>{{ card.$key }}</md-card-title>
+    <md-card-actions>
+      <!-- <button md-button color="primary" [routerLink]="card.$key">EDIT</button> -->
+      <button md-button color="warn">DISABLE</button>
+    </md-card-actions>
+  </md-card>
+</div>
