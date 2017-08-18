@@ -11,9 +11,9 @@ import { CardService } from '../../services/card.service';
 })
 export class NumberComponent implements OnInit {
   public card_number: string;
-  private subscription: Subscription;
-  private strain_card;
-  private invalid: boolean;
+  public subscription: Subscription;
+  public strain_card;
+  public invalid: boolean;
 
   constructor(private router: Router,
               private db: AngularFireDatabase,
@@ -26,7 +26,7 @@ export class NumberComponent implements OnInit {
     this.subscription = this.cs.getCard(this.card_number)
       .subscribe(item => {
         if (item.$exists()) {
-          this.router.navigate(['/game/number', this.card_number]);
+          this.router.navigate(['/number', this.card_number]);
         } else {
           this.invalid = true;
         }

@@ -12,13 +12,13 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class EntryComponent implements OnInit {
 
-  private name: string;
-  private phone: string;
-  private email: string;
-  private card_number: number;
-  private newsletter = true;
-  private sub: any;
-  private duplicate = false;
+  public name: string;
+  public phone: string;
+  public email: string;
+  public card_number: number;
+  public newsletter = true;
+  public sub: any;
+  public duplicate = false;
 
   @HostBinding('@routeAnimation') routeAnimation = true;
   @HostBinding('style.display') display = 'block';
@@ -37,7 +37,7 @@ export class EntryComponent implements OnInit {
 
   submitEntry() {
       if (this.cs.enterContest(this.name, this.phone, this.email, this.card_number, this.newsletter)) {
-        this.router.navigate(['/game/thanks']);
+        this.router.navigate(['/thanks']);
       } else {
         this.duplicate = true;
       }

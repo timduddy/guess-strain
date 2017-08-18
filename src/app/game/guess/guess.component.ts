@@ -16,11 +16,11 @@ export class GuessComponent implements OnInit, OnDestroy {
   @HostBinding('style.display') display = 'block';
   @HostBinding('style.position') position = 'relative';
 
-  private subscription: Subscription;
-  private strain_card;
-  private answer;
-  private incorrect;
-  private id;
+  public subscription: Subscription;
+  public strain_card;
+  public answer;
+  public incorrect;
+  public id;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -40,7 +40,7 @@ export class GuessComponent implements OnInit, OnDestroy {
 
   guessStrain() {
     if (this.answer === this.strain_card.strain) {
-      this.router.navigate(['/game/entry'], { queryParams: { card: this.id } });
+      this.router.navigate(['/entry'], { queryParams: { card: this.id } });
     } else {
       this.incorrect = true;
     }

@@ -11,7 +11,6 @@ import { GuessComponent } from './guess/guess.component';
 import { EntryComponent } from './entry/entry.component';
 import { CompleteComponent } from './complete/complete.component';
 
-// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { MdButtonModule, MdRadioModule, MdInputModule, MdIconModule, MdCardModule, MdCheckboxModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -35,7 +34,6 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
-    // BrowserAnimationsModule,
     FormsModule,
     MdButtonModule,
     MdRadioModule,

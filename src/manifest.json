@@ -1,0 +1,37 @@
+{
+  "dir": "ltr",
+  "lang": "en",
+  "short_name": "Dakine420",
+  "name": "Dakine 420 Strain Game",
+  "icons": [
+    {
+      "src": "assets/icons/app-icon-32x32.png",
+      "type": "image/png",
+      "sizes": "32x32"
+    },
+    {
+      "src": "assets/icons/android-chrome-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "assets/icons/android-chrome-256x256.png",
+      "type": "image/png",
+      "sizes": "256x256"
+    },
+    {
+      "src": "assets/icons/android-chrome-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "scope": "/",
+  "display": "standalone",
+  "theme_color": "#333333",
+  "description": "",
+  "orientation": "any",
+  "background_color": "#fff",
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "start_url": "./?utm_source=web_app_manifest"
+}

@@ -3,24 +3,13 @@ import { Headers, Http, Response } from '@angular/http';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 import 'rxjs/Rx';
 
-export class EntryModel {
-  $key: string;
-  $exists: () => {};
-  name: string;
-  phone: string;
-  email: string;
-  timestamp: Date;
-  card_number: number;
-  newsletter: boolean;
-}
-
 @Injectable()
 export class CardService {
 
-  private cards: FirebaseListObservable<any[]>;
-  private entry: FirebaseListObservable<any>;
-  private entries: FirebaseListObservable<any[]>;
-  public entities: EntryModel[];
+  public cards: FirebaseListObservable<any[]>;
+  public entry: FirebaseListObservable<any>;
+  public entries: FirebaseListObservable<any[]>;
+  public entities: any[];
 
   constructor(private af: AngularFireDatabase) {
     af.list('/entries').subscribe(classes => {
