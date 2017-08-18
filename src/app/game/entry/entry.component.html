@@ -1,24 +1,24 @@
 <md-card>
   <md-card-title>That's Correct!</md-card-title>
   <p>Please fill out the form to submit your entry to win $100</p>
-  <div fxLayout="column" fxLayoutGap="8px">
+  <form [formGroup]="entryForm" (ngSubmit)="submitEntry()" fxLayout="column" fxLayoutGap="8px">
     <md-input-container fxFlex>
-      <input mdInput placeholder="Name" [(ngModel)]="name" autofocus />
+      <input mdInput placeholder="Name" formControlName="name" autofocus />
     </md-input-container>
     <md-input-container fxFlex>
-      <input mdInput placeholder="Phone" [(ngModel)]="phone" />
+      <input mdInput placeholder="Phone" formControlName="phone" />
     </md-input-container>
     <md-input-container fxFlex>
-      <input mdInput placeholder="Email" [(ngModel)]="email" />
+      <input mdInput placeholder="Email" formControlName="email" />
     </md-input-container>
     <div fxFlex>
-      <md-checkbox [(ngModel)]="newsletter">Sign up for our newsletter</md-checkbox>
+      <md-checkbox formControlName="newsletter">Sign up for our newsletter</md-checkbox>
     </div>
     <div fxFlex>
-      <button md-raised-button color="accent" [disabled]="!name || !phone || !email" (click)="submitEntry()">SUBMIT</button>
+      <button type="submit" md-raised-button color="accent" [disabled]="entryForm.invalid">SUBMIT</button>
     </div>
     <md-error *ngIf="duplicate">
           You are only able to enter once per card.
     </md-error>
-  </div>
+  </form>
 </md-card>

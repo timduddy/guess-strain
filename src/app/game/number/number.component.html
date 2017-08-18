@@ -1,17 +1,17 @@
-<div fxLayout="column" fxLayoutGap="16px">
+<form [formGroup]="cardForm" (ngSubmit)="getCard()" novalidate fxLayout="column" fxLayoutGap="16px">
 
   <div fxFlex>
     <p>
       Enter a number to guess the strain
     </p>
   </div>
-
+  
   <md-input-container fxFlex>
-    <input type="number" mdInput [(ngModel)]="card_number" autofocus>
+    <input type="number" mdInput formControlName="card_number" autofocus>
   </md-input-container>
 
   <div fxFlex> 
-    <button md-raised-button color="accent" (click)="getCard()">NEXT</button>
+    <button type="submit" md-raised-button color="accent" (click)="getCard()">NEXT</button>
   </div>
 
   <div fxFlex *ngIf="invalid">
@@ -19,6 +19,6 @@
       <md-icon>error</md-icon>
       That's not a valid card number
     </p>
-  </div>
+  </div> 
 
-</div>
+</form>
