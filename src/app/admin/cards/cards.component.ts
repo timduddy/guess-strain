@@ -27,4 +27,12 @@ export class CardsComponent implements OnInit {
     });
   }
 
+  enable(id) {
+     this.cs.enableCard(id);
+  }
+
+  disable(id) {
+    this.cs.disableCard(id);
+  }
+
 }

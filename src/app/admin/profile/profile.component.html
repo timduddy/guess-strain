@@ -1,0 +1,15 @@
+<md-card>
+  <md-card-title>Your information</md-card-title>
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" fxLayout="column" fxLayoutGap="16px">
+    <md-input-container fxFlex>
+      <input mdInput placeholder="Name" formControlName="name" />
+    </md-input-container>
+    <md-input-container fxFlex>
+      <input mdInput placeholder="Email" formControlName="email" />
+    </md-input-container>
+    <div fxFlex>
+      <button md-button (click)="resetPassword(profileForm.value.email)" color="accent">RESET PASSWORD</button>
+      <button md-raised-button type="submit" color="accent">SAVE</button>
+    </div>
+  </form>
+</md-card>

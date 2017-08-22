@@ -12,9 +12,9 @@ export class SearchPipe implements PipeTransform {
       if (value) {
           return items.filter(
             it =>
-            (it['name'].toLowerCase().indexOf(value.toLowerCase()) > -1) ||
-            (it['email'].toLowerCase().indexOf(value.toLowerCase()) > -1) ||
-            (it['phone'].toLowerCase().indexOf(value.toLowerCase()) > -1)
+            (it['name'].toLowerCase().indexOf(value.toLowerCase()) > -1)
+            || (it['email'].toLowerCase().indexOf(value.toLowerCase()) > -1)
+            // || (it['phone'].toLowerCase().indexOf(value.toLowerCase()) > -1)
           );
       }
       return items;

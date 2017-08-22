@@ -1,13 +1,16 @@
-<form [formGroup]="cardForm" (ngSubmit)="onSubmit(strain_card.$key)">
+<form [formGroup]="cardForm" (ngSubmit)="onSubmit()">
   <md-card>
-    <md-card-title>Edit card: {{ strain_card?.$key }}</md-card-title>
-    <div fxLayout="column" fxLayoutGap="8px">
+    <md-card-title>Add Card</md-card-title>
+    <div fxLayout="column" fxLayoutGap="16px">
+      <md-input-container fxFlex>
+        <input mdInput placeholder="Card Number" formControlName="number">
+      </md-input-container>
       <md-input-container fxFlex>
         <input mdInput placeholder="Strain Name" formControlName="strain">
       </md-input-container>
     </div>
     <h3>Options</h3>
-    <div fxLayout="column" fxLayoutGap="8px">
+    <div fxLayout="column" fxLayoutGap="16px">
       <md-input-container fxFlex>
         <input mdInput placeholder="Option" formControlName="option1">
       </md-input-container>
@@ -17,6 +20,11 @@
       <md-input-container fxFlex>
         <input mdInput placeholder="Option" formControlName="option3">
       </md-input-container>
+      <div fxFlex>
+					<input type="file" name="file-1[]" id="file-1" class="inputfile" (change)="detectFiles($event)">
+					<label for="file-1"><md-icon>file_upload</md-icon><span>Choose a file…</span></label>
+
+      </div>
       <div fxFlex>
         <md-checkbox formControlName="enabled">Enabled</md-checkbox>
       </div>

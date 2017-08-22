@@ -15,8 +15,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MdButtonModule, MdRadioModule, MdInputModule, MdIconModule, MdCardModule, MdCheckboxModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
+import { SharedModule } from '../shared/shared.module';
 import { CardService } from '../services/card.service';
-import { TitlePipe } from '../shared/title.pipe';
 
 const routes: Routes = [
   {
@@ -34,6 +34,7 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
+    SharedModule,
     FormsModule,
     ReactiveFormsModule,
     MdButtonModule,
@@ -52,8 +53,7 @@ const routes: Routes = [
     NumberComponent,
     GuessComponent,
     EntryComponent,
-    CompleteComponent,
-    TitlePipe
+    CompleteComponent
   ],
   providers: [CardService]
 })

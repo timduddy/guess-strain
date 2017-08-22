@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { CardService } from '../services/card.service';
 import { Observable } from 'rxjs/Observable';
+import { Location } from '@angular/common';
 import 'rxjs/add/operator/mergeMap';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
@@ -18,12 +19,14 @@ const SMALL_WIDTH_BREAKPOINT = 1024;
 export class AdminComponent implements OnInit {
 
   title = 'Dakine 420 Strain Game';
+  back = false;
 
   constructor(
     private auth: AuthService,
     private router: Router,
     private route: ActivatedRoute,
-    private titleService: Title
+    private titleService: Title,
+    private location: Location
   ) { }
 
   ngOnInit() {
@@ -31,6 +34,7 @@ export class AdminComponent implements OnInit {
       const myData = this.route.snapshot.children[0].data;
       if (myData) {
         this.title = myData.title;
+        this.back = myData.back;
       }
     }
     this.setTitle(this.title);
@@ -55,6 +59,7 @@ export class AdminComponent implements OnInit {
           this.title = event.title;
           this.setTitle(event.title);
         }
+        this.back = event.back;
       });
   }
 
@@ -66,6 +71,10 @@ export class AdminComponent implements OnInit {
     this.auth.logout().then(() => {
       this.router.navigate(['/']);
     });
+  }
+
+  goBack() {
+    this.location.back();
   }
 
   public setTitle(newTitle: string) {

@@ -12,6 +12,7 @@ import { CardService } from '../../services/card.service';
   animations: [slideUp]
 })
 export class GuessComponent implements OnInit, OnDestroy {
+
   @HostBinding('@routeAnimation') routeAnimation = true;
   @HostBinding('style.display') display = 'block';
   @HostBinding('style.position') position = 'relative';
@@ -21,6 +22,7 @@ export class GuessComponent implements OnInit, OnDestroy {
   public answer;
   public incorrect;
   public id;
+  loading = true;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -34,6 +36,7 @@ export class GuessComponent implements OnInit, OnDestroy {
       .subscribe(item => {
         if (item) {
           this.strain_card = item;
+          this.shuffle(this.strain_card.options);
         }
       });
   }
@@ -48,6 +51,31 @@ export class GuessComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+
+  loaded() {
+    this.loading = false;
+    console.log('loaded');
+  }
+
+  shuffle(array) {
+      let counter = array.length;
+
+      // While there are elements in the array
+      while (counter > 0) {
+          // Pick a random index
+          const index = Math.floor(Math.random() * counter);
+
+          // Decrease counter by 1
+          counter--;
+
+          // And swap the last element with it
+          const temp = array[counter];
+          array[counter] = array[index];
+          array[index] = temp;
+      }
+
+      return array;
   }
 
 }

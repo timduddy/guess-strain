@@ -48,6 +48,6 @@ export class EntriesComponent implements OnInit {
     }
     const winner = Math.floor((Math.random() * this.entries.length));
     this.entries[winner].winner = true;
-    console.log(this.entries[winner]);
+    // console.log(this.entries[winner]);
   }
 }

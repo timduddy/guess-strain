@@ -18,6 +18,7 @@ import {
   MdIconModule
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -54,6 +55,7 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     LoginComponent,
+    // FocusDirective,
     // SearchPipe,
     // AdminComponent,
     // EntriesComponent,
@@ -70,6 +72,7 @@ const routes: Routes = [
     MdProgressBarModule,
     MdIconModule,
     FlexLayoutModule,
+    HttpModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireDatabaseModule,

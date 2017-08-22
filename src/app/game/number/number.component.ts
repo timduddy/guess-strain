@@ -32,7 +32,7 @@ export class NumberComponent implements OnInit {
     const values = this.cardForm.value;
     this.subscription = this.cs.getCard(values.card_number)
       .subscribe(item => {
-        if (item.$exists()) {
+        if (item.$exists() && item.enabled === true) {
           this.router.navigate(['/number', values.card_number]);
         } else {
           this.invalid = true;

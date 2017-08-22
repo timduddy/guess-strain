@@ -24,8 +24,67 @@ export class CardService {
     return this.cards;
   }
 
+  getLastCard() {
+    this.cards = this.af
+        .list('/strain-cards')
+        .map ( arr => arr ) as FirebaseListObservable<any[]>;
+    return this.cards;
+  }
+
   getCard(id: string) {
     return this.af.object('/strain-cards/' + id);
+  }
+
+  enableCard(id: string) {
+    const card = this.af.object('/strain-cards/' + id);
+    card.update({ enabled: true });
+  }
+
+  disableCard(id: string) {
+    const card = this.af.object('/strain-cards/' + id);
+    card.update({ enabled: false });
+  }
+
+  updateCard(id: string, value: any) {
+
+    value.strain = value.strain.toLowerCase()
+    value.option1 = value.option1.toLowerCase()
+    value.option2 = value.option2.toLowerCase()
+    value.option3 = value.option3.toLowerCase();
+    const options = [value.strain, value.option1, value.option2, value.option3 ];
+
+    const card = this.af.object('/strain-cards/' + id);
+    card.update({
+      strain: value.strain,
+      options: options,
+      enabled: value.enabled
+    }).then((res: any) => {
+        console.log('success');
+      })
+      .catch((err: any) => {
+        console.log('err');
+      });
+  }
+
+  addCard(id: number, value: any, upload) {
+    value.strain = value.strain.toLowerCase()
+    value.option1 = value.option1.toLowerCase()
+    value.option2 = value.option2.toLowerCase()
+    value.option3 = value.option3.toLowerCase();
+    const options = [value.strain, value.option1, value.option2, value.option3 ];
+
+    const card = this.af.object('/strain-cards/' + id);
+    card.set({
+      strain: value.strain,
+      options: options,
+      enabled: value.enabled,
+      image: upload.url
+    }).then((res: any) => {
+        console.log('success');
+      })
+      .catch((err: any) => {
+        console.log('err');
+      });
   }
 
   enterContest(name: string, phone: string, email: string, card_number: number, newsletter: boolean) {
@@ -71,6 +130,7 @@ export class CardService {
     const items = this.af.list('/entries');
     items.remove();
   }
+
 
 
 }

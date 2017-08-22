@@ -1,11 +1,14 @@
 <div fxLayout="row" fxLayoutGap="24px" fxLayoutWrap
      fxLayout.lt-md="column" fxLayoutGap.lt-md="16px">
-  <md-card fxFlex="calc(25% - 24px)" fxFlex.lt-md class.gt-md="large" *ngFor="let card of cards">
-    <img md-card-image [src]="card.image">
-    <md-card-title>{{ card.$key }}</md-card-title>
+  <md-card fxFlex="calc(25% - 24px)" fxFlex.lt-md class.gt-sm="large" *ngFor="let card of cards">
+    <img md-card-image [src]="card?.image">
+    <md-card-title>{{ card?.$key }}</md-card-title>
     <md-card-actions>
-      <!-- <button md-button color="primary" [routerLink]="card.$key">EDIT</button> -->
-      <button md-button color="warn">DISABLE</button>
+      <button md-button routerLink="/admin/card/{{card.$key}}">EDIT</button>
+      <button md-button color="primary" *ngIf="!card.enabled" (click)="enable(card.$key)">ENABLE</button>
+      <button md-button color="warn" *ngIf="card.enabled" (click)="disable(card.$key)">DISABLE</button>
     </md-card-actions>
   </md-card>
 </div>
+
+<a md-fab color="accent" routerLink="add"><md-icon>add</md-icon></a>

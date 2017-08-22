@@ -38,7 +38,7 @@
                 Newsletter
             </div>
         </div>
-        <div fxLayout="column" *ngIf="entries?.length === 0">
+        <div fxLayout="column" *ngIf="(entries | search: searchString).length === 0">
             <div class="table-body-row">
                 <div class="table-body-col">
                     <p>No entries</p>

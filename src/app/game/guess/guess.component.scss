@@ -1,6 +1,17 @@
 .strain-image {
     background-size: cover;
     border-radius: 4px;
+    object-fit: cover;
+}
+.large {
+    height: 350px;
+    border-radius: 4px;
+    object-fit: cover;
+}
+.small {
+    height: 225px;
+    border-radius: 4px;
+    object-fit: cover;
 }
 
 .mat-radio-button {

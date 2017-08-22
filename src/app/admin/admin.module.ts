@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { SharedModule } from '../shared/shared.module';
 import { RouterModule, Routes } from '@angular/router';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -13,6 +14,7 @@ import {
   MdListModule,
   MdButtonModule,
   MdInputModule,
+  MdCheckboxModule,
   MdCardModule,
   MdProgressBarModule,
   MdIconModule
@@ -25,8 +27,11 @@ import { CardsComponent } from './cards/cards.component';
 import { EditComponent } from './cards/edit/edit.component';
 import { UsersComponent } from './users/users.component';
 
-import { SearchPipe } from '../shared/search.pipe';
 import { AuthGuard } from '../services/auth-guard.service';
+import { UploadService } from '../services/upload.service';
+import { AddComponent } from './cards/add/add.component';
+import { ProfileComponent } from './profile/profile.component';
+import { NewComponent } from './users/new/new.component';
 
 const routes: Routes = [
   {
@@ -37,8 +42,11 @@ const routes: Routes = [
       { path: '', redirectTo: 'entries', pathMatch: 'full' },
       { path: 'entries', component: EntriesComponent, data: { title: 'Entries' } },
       { path: 'cards', component: CardsComponent, data: { title: 'Cards' } },
-      { path: 'cards/:id', component: EditComponent, data: { title: `Card` } },
+      { path: 'card/:id', component: EditComponent, data: { title: `Card`, back: true } },
+      { path: 'cards/add', component: AddComponent, data: { title: `Add Card`, back: true } },
       { path: 'users', component: UsersComponent, data: { title: 'Users' } },
+      { path: 'users/add', component: NewComponent, data: { title: 'New User', back: true } },
+      { path: 'profile', component: ProfileComponent, data: {title: 'Profile' } }
     ]
   },
 ]
@@ -46,6 +54,7 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
+    SharedModule,
     ReactiveFormsModule,
     FormsModule,
     MdMenuModule,
@@ -53,11 +62,13 @@ const routes: Routes = [
     MdToolbarModule,
     MdButtonModule,
     MdInputModule,
+    MdCheckboxModule,
     MdCardModule,
     MdListModule,
     MdProgressBarModule,
     MdIconModule,
     FlexLayoutModule,
+    // HttpModule,
     RouterModule.forChild(routes),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
@@ -68,9 +79,11 @@ const routes: Routes = [
     CardsComponent,
     EditComponent,
     UsersComponent,
-    SearchPipe
+    AddComponent,
+    ProfileComponent,
+    NewComponent
   ],
-  providers: [AuthGuard],
-  exports: [SearchPipe]
+  providers: [AuthGuard, UploadService],
+  exports: []
 })
 export class AdminModule { }
