@@ -2,7 +2,17 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdButtonModule, MdInputModule, MdCardModule, MdCheckboxModule, MdProgressBarModule, MdIconModule } from '@angular/material';
+import {
+  MdSidenavModule,
+  MdToolbarModule,
+  MdButtonModule,
+  MdInputModule,
+  MdCardModule,
+  MdCheckboxModule,
+  MdProgressBarModule,
+  MdIconModule,
+  MdMenuModule
+} from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Observable } from 'rxjs/Observable';
@@ -43,12 +53,15 @@ describe('AdminComponent', () => {
         BrowserAnimationsModule,
         FormsModule,
         ReactiveFormsModule,
+        MdSidenavModule,
+        MdToolbarModule,
         MdButtonModule,
         MdInputModule,
         MdCardModule,
         MdCheckboxModule,
         MdProgressBarModule,
         MdIconModule,
+        MdMenuModule,
         FlexLayoutModule,
         RouterTestingModule,
         AngularFireModule.initializeApp(environment.firebase),

@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MdButtonModule, MdRadioModule, MdInputModule, MdIconModule, MdCardModule, MdCheckboxModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -20,7 +20,7 @@ describe('EntryComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         BrowserAnimationsModule,
-        FormsModule,
+        ReactiveFormsModule,
         MdButtonModule, MdRadioModule, MdInputModule, MdIconModule, MdCardModule, MdCheckboxModule,
         FlexLayoutModule,
         RouterTestingModule,

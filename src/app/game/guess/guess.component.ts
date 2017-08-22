@@ -59,7 +59,8 @@ export class GuessComponent implements OnInit, OnDestroy {
   }
 
   shuffle(array) {
-      let counter = array.length;
+    if (array) {
+            let counter = array.length;
 
       // While there are elements in the array
       while (counter > 0) {
@@ -76,6 +77,8 @@ export class GuessComponent implements OnInit, OnDestroy {
       }
 
       return array;
+    }
+
   }
 
 }

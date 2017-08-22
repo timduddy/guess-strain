@@ -1,6 +1,6 @@
 <div fxLayout="column" fxLayoutGap="16px">
     <!-- <div fxFlex="350px" fxFlex.lt-md="225px" class="strain-image" [ngStyle]="{'background-image': 'url(' + strain_card?.image + ')'}"></div> -->
-    <img [src]="strain_card?.image" class="strain-image" class.lt-md="small" class.gt-sm="large" (load)="loaded()">
+    <img [src]="strain_card?.image" class="strain-image" class.lt-md="small" class.gt-sm="large" (load)="loaded()" alt="Guess the strain">
     <div fxFlex *ngIf="incorrect">
         <p class="warning">
             <md-icon>error</md-icon>
