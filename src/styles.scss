@@ -33,6 +33,9 @@ body {
     top: 0;
     left: 0;
     padding: 24px;
+    .container {
+        max-width: 100%;
+    }
     .logo {
         max-width: 280px;
         height: auto;
