@@ -12,7 +12,15 @@ import { EntryComponent } from './entry/entry.component';
 import { CompleteComponent } from './complete/complete.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MdButtonModule, MdRadioModule, MdInputModule, MdIconModule, MdCardModule, MdCheckboxModule } from '@angular/material';
+import {
+  MdButtonModule,
+  MdRadioModule,
+  MdInputModule,
+  MdIconModule,
+  MdCardModule,
+  MdCheckboxModule,
+  MdProgressSpinnerModule
+} from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { SharedModule } from '../shared/shared.module';
@@ -43,6 +51,7 @@ const routes: Routes = [
     MdIconModule,
     MdCardModule,
     MdCheckboxModule,
+    MdProgressSpinnerModule,
     FlexLayoutModule,
     RouterModule.forChild(routes),
     AngularFireModule.initializeApp(environment.firebase),

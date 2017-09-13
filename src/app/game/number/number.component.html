@@ -1,8 +1,8 @@
 <form [formGroup]="cardForm" (ngSubmit)="getCard()" novalidate fxLayout="column" fxLayoutGap="16px">
 
-  <div fxFlex>
+  <!-- <div fxFlex>
     <p>
-      Enter a number to guess the strain
+      This weeks number{{ cards?.length > 1 ? 's' : '' }}: <span *ngFor="let card of cards; let isLast = last;">{{ card?.$key }}<span *ngIf="!isLast">, </span></span>
     </p>
   </div>
   
@@ -12,6 +12,10 @@
 
   <div fxFlex> 
     <button type="submit" md-raised-button color="accent" (click)="getCard()">NEXT</button>
+  </div> -->
+
+  <div fxFlex>
+    <md-spinner></md-spinner>
   </div>
 
   <div fxFlex *ngIf="invalid">

@@ -16,6 +16,7 @@ export class NumberComponent implements OnInit {
   public subscription: Subscription;
   public strain_card;
   public invalid: boolean;
+  cards = [];
 
   constructor(private router: Router,
               private db: AngularFireDatabase,
@@ -26,6 +27,16 @@ export class NumberComponent implements OnInit {
     this.cardForm = this.fb.group({
       card_number: '',
     });
+    this.subscription = this.cs.getCards()
+    .subscribe(items => {
+      for (let i = 0; i < items.length; i++) {
+        if (items[i].enabled === true) {
+          console.log(items[i].$key);
+          this.router.navigate(['/number', items[i].$key]);
+          // this.cards.push(items[i]);
+        }
+      }
+  });
   }
 
   getCard() {
